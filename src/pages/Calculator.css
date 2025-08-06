@@ -25,3 +25,16 @@ header h2 { font-size: 1.5rem; margin-top: 0.5rem; }
 .macros { display: flex; justify-content: space-around; margin-top: 1rem; }
 .macros div { font-weight: bold; }
 .height { display: flex; gap: 0.5rem; }
+
+@media (max-width: 600px) {
+  
+  header h1 { font-size: 2rem; }
+  header h2 { font-size: 1.25rem; }
+  .top-row { flex-direction: column; align-items: center; }
+  .card { width: 100%; max-width: 300px; }
+  .macros { flex-direction: column; }
+  .calc-form h3 { text-align: center; }
+  .sex{
+    margin-bottom: 1rem;
+  }
+}

@@ -40,12 +40,16 @@ export default function App() {
       <form className="calc-form" onSubmit={e => e.preventDefault()}>
         <h3>Step 1: Basic Information</h3>
         <div className="row">
+          <div className='top-row'>
           <div className="card sex">
             <button type="button" className={sex === 'male' ? 'selected' : ''} onClick={() => setSex('male')}>🚹</button>
             <button type="button" className={sex === 'female' ? 'selected' : ''} onClick={() => setSex('female')}>🚺</button>
           </div>
+          
           <div className="card height"><input type="number" placeholder="ft" value={heightFeet} onChange={e => setHeightFeet(e.target.value)} /><input type="number" placeholder="in" value={heightInches} onChange={e => setHeightInches(e.target.value)} /></div>
+          </div>
           <div className="card"><input type="number" placeholder="Age" value={age} onChange={e => setAge(e.target.value)} /></div>
+          
      
           {/* <div className="card"><input type="number" placeholder="Height (in)" value={heightInches} onChange={e => setHeightInches(e.target.value)} /></div> */}
           <div className="card"><input type="number" placeholder="Weight (kg)" value={weight} onChange={e => setWeight(e.target.value)} /></div>
