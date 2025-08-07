@@ -13,7 +13,7 @@ export default function Form() {
 // This contains your original header and form.
 function HomePage() {
   return (
-    <div className="bg-black text-white min-h-screen font-sans flex flex-col items-center justify-center p-4">
+    <div className=" text-white min-h-screen font-sans flex flex-col items-center justify-center p-4">
       <header className="text-center mb-8 header">
         <h1 className="text-5xl md:text-6xl font-bold tracking-wider">
           Aryan<span>Bhatia</span>
