@@ -16,13 +16,18 @@ export default function App() {
     const hCm = ((parseFloat(heightFeet) * 12) + parseFloat(heightInches)) * 2.54;
     const wKg = parseFloat(weight);
     let bmr = sex === 'male'
-      ? 10 * wKg + 6.25 * hCm - 5 * Number(age) + 5
-      : 10 * wKg + 6.25 * hCm - 5 * Number(age) - 161;
+      ? (10 * wKg) + (6.25 * hCm) - (4 * Number(age)) + 5
+      : (10 * wKg) + (6.25 * hCm) - (4 * Number(age)) - 161;
+      console.log('age', age);
     const activityFactors = { sedentary: 1.2, light: 1.375, moderate: 1.55, active: 1.725, very: 1.9 };
     bmr *= activityFactors[activity];
     const goalOffsets = { maintain: 0, loseSlow: -300, loseFast: -650, leanBulk: +250 };
     return Math.round(bmr + goalOffsets[goal]);
   };
+
+    // Helper to tell if the goal is one of the “losing” ones
+  const isLosing = goal === 'loseSlow' || goal === 'loseFast';
+
 
   const calories = calculateCalories();
 
@@ -90,13 +95,28 @@ export default function App() {
           ))}
         </div>
 
-        <div className="results nar">
+       <div className="results nar">
           <h3>Your Results:</h3>
           <div className="calorie-output">{calories}</div>
           <div className="macros">
-            <div>Fats: {Math.round(calories * 0.25 / 9)}g</div>
-            <div>Protein: {Math.round(calories * 0.3 / 4)}g</div>
-            <div>Carbs: {Math.round(calories * 0.45 / 4)}g</div>
+            <div>
+              Fats: {isLosing
+                ? Math.round(calories * 0.26 / 9)
+                : Math.round(calories * 0.23 / 9)
+              }g
+            </div>
+            <div>
+              Protein: {isLosing
+                ? Math.round(calories * 0.23 / 4)
+                : Math.round(calories * 0.21 / 4)
+              }g
+            </div>
+            <div>
+              Carbs: {isLosing
+                ? Math.round(calories * 0.51 / 4)
+                : Math.round(calories * 0.56 / 4)
+              }g
+            </div>
           </div>
         </div>
       </form>

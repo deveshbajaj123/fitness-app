@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './Form.css';
 import { useNavigate } from 'react-router-dom'; 
+import { db } from './firebase.js';
+import { collection, addDoc } from 'firebase/firestore';
 
 // --- Main App Component (Now handles routing) ---
 export default function Form() {
@@ -47,13 +49,31 @@ function LeadForm() {
     setIsLoading(true);
     setMessage('');
 
-    console.log('Form Data Submitted:', { fullName, email, instagram });
+    try {
+      // Add a new document with a generated ID to a collection named 'leads'
+      const docRef = await addDoc(collection(db, 'leads'), {
+        fullName: fullName,
+        email: email,
+        instagram: instagram,
+        timestamp: new Date() // Add a timestamp for when the lead was captured
+      });
 
-    // Simulate network request
-    setTimeout(() => {
+      console.log("Document written with ID: ", docRef.id);
+      setMessage('Your information has been successfully submitted!');
+      // Optionally clear the form after submission
+      setFullName('');
+      setEmail('');
+      setInstagram('');
+
+      // Navigate to the login page after successful submission
+      navigate('/login');
+
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      setMessage('Failed to submit. Please try again.');
+    } finally {
       setIsLoading(false);
-      navigate('/login'); // Navigate to the Calculator page
-    }, 1500);
+    }
   };
 
   return (
