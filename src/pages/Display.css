@@ -1,0 +1,49 @@
+.container {
+  padding: 16px;
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #2d2d2d;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.data-table th,
+.data-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #444;
+}
+
+.data-table th {
+  background-color: #3d3d3d;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.data-table tr:hover td {
+  background-color: #333;
+}
+
+.loading, .error, .no-data {
+  color: #fff;
+  padding: 16px;
+}
+
+.error {
+  color: #ff6b6b;
+}
